@@ -1,0 +1,77 @@
+.options {
+    display: flex;
+}
+
+.options a {
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 19px;
+    color: white;
+    background-color: red;
+    border-radius: 4px;
+    border: 0;
+    cursor: pointer;
+}
+
+.detials-chefs {
+    width: 100%;
+    text-align: center;
+}
+
+.detials-chefs img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 30px;
+}
+
+.detials-chefs p {
+    font-size: 36px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.detials-chefs span {
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--third-color);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 16px;
+}
+
+.cards .card {
+    display: flex;
+    align-items: center;
+}
+
+.card .logo img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.card .details h3 {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.card .details a {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--secundary-color);
+}
+
+.card .details a:hover {
+    opacity: 0.6;
+}

@@ -1,0 +1,111 @@
+.options {
+    display: flex;
+}
+
+.options a {
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 19px;
+    color: white;
+    background-color: red;
+    border-radius: 4px;
+    border: 0;
+    cursor: pointer;
+}
+
+.information img {
+    width: 980px;
+    height: 240px;
+    object-fit: contain;
+    border-radius: 15px;
+}
+
+.information .title {
+    width: 100%;
+    display: grid;
+    grid-template-rows: 50px 30px;
+    grid-gap: 36px;
+    align-items: center;
+    justify-content: center;
+}
+
+.information .title h1 {
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 42px;
+    text-align: center;
+    color: var(--primary-color);
+    margin-top: 50px;
+}
+
+.information .title h4 {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--third-color);
+    text-align: center;
+    margin-bottom: 31px;
+}
+
+.information .details h2 {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 28px;
+    color: var(--primary-color);
+    margin: 19px 0 19px 0;
+}
+
+.details ul li,
+.details ol li,
+.details p {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--details-color);
+    line-height: 28px;
+    margin-left: 20px;
+}
+
+.details p {
+    margin-left: 0;
+    margin-bottom: 60px;
+}
+
+.cards-recipes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+}
+
+.cards-recipes .card {
+    display: flex;
+}
+
+.cards-recipes .card img {
+    width: 172px;
+    height: 80px;
+    border-radius: 8.57px;
+    margin-right: 20px;
+}
+
+.cards-recipes .card h2 {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 21px;
+    color: var(--primary-color);
+}
+
+.cards-recipes .card h4 {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 16px;
+    color: var(--third-color);
+}
+
+.cards-recipes .card a {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 16px;
+    color: var(--secundary-color);
+}

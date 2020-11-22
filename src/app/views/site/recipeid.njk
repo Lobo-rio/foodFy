@@ -1,0 +1,68 @@
+{% extends "./layout.njk" %}
+
+{% block title %}
+    <title>Receitas - Foodfy Restaurante</title>
+{% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/recipes.css">
+{% endblock styles %}
+
+{% block main %}
+    <div class="main">
+        <div class="recipe-image">
+            <img src="{{ items.cardImage }}" alt="{{ items.cardTitle }}">
+        </div>
+        <div class="details-title">
+            <h1>{{ items.cardTitle }}</h1>
+            <p>{{ items.cardAuthor }}</p>
+        </div>
+
+        <div class="title-recipes">
+            <h2> 
+                <i class="fa fa-list" aria-hidden="true"></i> Ingredientes
+            </h2>
+            <span class="ingredients">
+                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            </span>
+        </div>
+
+        <ul id="list-ingredients" class="active">
+            {% for list in items.ingredients %}
+                <li>{{ list }}</li>
+            {% endfor %}
+        </ul>
+
+        <div class="title-recipes">
+            <h2> 
+                <i class="fa fa-list" aria-hidden="true"></i> Modo de preparo
+            </h2>
+            <span class="method-preparation">
+                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            </span>
+        </div>
+
+        <ul id="list-method-preparation" class="active">
+            {% for list in items.preparation %}
+                <li>{{ list }}</li>
+            {% endfor %}
+        </ul>
+
+        <div class="title-recipes">
+            <h2> 
+                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                 Informações adicionais
+            </h2>
+            <span class="information">
+                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            </span>
+        </div>
+
+        <p id="list-information" class="active">{{ items.information }}</p>
+    </div>
+{% endblock main %}
+
+{% block scripts %}
+    <script src="scripts/index.js"></script>
+{% endblock scripts %}

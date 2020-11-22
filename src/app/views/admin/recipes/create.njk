@@ -1,0 +1,77 @@
+{% extends "../layout.njk" %}
+
+{% block styles %}
+    
+{% endblock styles %}
+
+{% block main %}
+    <section>
+        <div class="container">
+            <form action="/admin/recipes" method="POST">
+                <div class="title">
+                    <h1>Criando receita</h1>
+
+                    <button type="submit" class="save">Salvar receita</button>
+                </div>
+                <div class="description">
+
+                    <div class="item">
+                        <div>Imagem da receita</div>
+                        <div>
+                            <input type="url" name="image" placeholder="http://" required>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div>Nome da Receita</div>
+                        <div>
+                            <input type="text" name="title" placeholder="Name" required>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div>Autor(a) da Receita</div>
+                        <div>
+                            <select name="chef_id">
+                                {% for item in chefs %}
+                                    <option value="{{item.id}}">{{item.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div>Ingredientes</div>
+                        <div id="ingredients">
+                            <div class="ingredient">
+                                <input type="text" name="ingredients[]" value="{{ ingredient }}" placeholder="Ingredient"/>
+                            </div>
+                        </div>
+                        <span class="add-ingredient">Adicionar novo ingrediente</span>
+                    </div>
+
+                    <div class="item">
+                        <div>Modo de preparo</div>
+                        <div id="preparings">
+                            <div class="preparing">
+                                <input type="text" name="preparation[]" value="{{ preparing }}" placeholder="way of preparing"/>
+                            </div>
+                        </div>
+                        <span class="add-preparing">Adicionar novo modo de preparar</span>
+                    </div>
+
+                    <div class="item">
+                        <div>Informações adicionais</div>
+                        <div>
+                            <textarea name="information" cols="30" rows="7" placeholder="Additional Information"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock main %}
+{% block scripts %}
+    <script src="/admin/scripts/index.js"></script>
+{% endblock scripts %}

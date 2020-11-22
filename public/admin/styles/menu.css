@@ -1,0 +1,30 @@
+header {
+    width: 100%;
+    height: 80px;
+    background-color: var(--primary-color);
+}
+
+header .menu {
+    width: 940px;
+    height: 75px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+header .menu img {
+    color: white;
+    margin-right: 150px;
+}
+
+.menu a {
+    font-size: 15px;
+    line-height: 18px;
+    margin: 0 30px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.menu a:hover {
+    opacity: 0.6;
+}

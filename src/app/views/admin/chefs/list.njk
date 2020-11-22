@@ -1,0 +1,32 @@
+{% extends "../layout.njk" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="/admin/styles/chefs.css">
+    <link rel="stylesheet" href="/admin/styles/messages.css">
+{% endblock styles %}
+
+{% block main %}
+    <section>
+        
+        <div class="container">
+            {% include "../partials/messages.njk" %}
+            <div class="title">
+                <h2>Gerenciar Chefs</h2>
+                <a href="/admin/chefs/create" class="button save">Novo Chef</a>
+            </div>
+            <div class="cards">
+                {% for item in chefs %}
+                <div class="card">
+                    <div class="logo">
+                        <img src="{{item.avatar}}" alt="{{item.name}}">
+                    </div>
+                    <div class="details">
+                        <h3>{{item.name}}</h3>
+                        <a href="/admin/chefs/{{item.id}}/details">Visualizar</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock main %}

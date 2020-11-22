@@ -1,0 +1,95 @@
+.main .recipe-image img {
+    width: 940px;
+    height: 280px;
+    margin-bottom: 50px;
+
+    border-radius: 15px;
+}
+
+.main .details-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main .details-title h1 {
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 42px;
+}
+
+.main .details-title p {
+    font-size: 20px;
+    font-weight: regular;
+    line-height: 24px;
+
+    color: var(--color-cinza);
+    margin-bottom: 50px;
+}
+
+.main .title-recipes {
+    display: flex;
+    justify-content: space-between;
+    
+    padding-top: 15px;
+    margin-bottom: 20px;
+    background-color: var(--color-selection);
+    border-radius: 5px;
+}
+
+.main .title-recipes h2 {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 28px;
+
+    margin-left: 15px;
+    margin-bottom: 20px;
+}
+
+.main .title-recipes span {
+    width: 30px;
+    height: 30px;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 28px;
+    text-align: center;
+
+    border-radius: 5px;
+    margin-right: 25px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.main .title-recipes span.ingredients:hover,
+.main .title-recipes span.method-preparation:hover,
+.main .title-recipes span.information:hover {
+    background-color: var(--color-selection-hover);
+}
+
+.main ul.list-ingredients,
+.main ul.list-method-preparation {
+    margin-left: 30px;
+}
+
+.main ul#list-ingredients,
+.main ul#list-method-preparation,
+.main p#list-information {
+    font-size: 18px;
+    font-weight: regular;
+    line-height: 28px;
+    padding: 30px;
+
+    margin-bottom: 20px;
+
+    border: 1px solid var(--color-list);
+    border-radius: 5px;
+    color: var(--color-list);
+
+    transition: 300ms;
+}
+
+.main ul.active,
+.main p.active {
+    display: none;
+}
+

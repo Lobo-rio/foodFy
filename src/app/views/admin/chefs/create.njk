@@ -1,0 +1,28 @@
+{% extends "../layout.njk" %}
+
+{% block styles %}{% endblock styles %}
+
+{% block main %}
+    <section>
+        <div class="container">
+            <form action="/admin/chefs" method="POST">
+                <div class="title">
+                    <h2>Criando chef</h2>
+                    <button type="submit" class="save">Salvar Chef</button>
+                </div>
+                <div class="item">
+                    <div>Nome</div>
+                    <div>
+                        <input type="text" name="name" placeholder="Informe o nome do chef..." value="{{ chef.name }}" required>
+                    </div>
+                </div>
+                <div class="item">
+                    <div>Avatar</div>
+                    <div>
+                        <input type="url" name="avatar" placeholder="Informe a url da com a foto do chef..." value="{{ chef.avatar }}" required>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock main %}

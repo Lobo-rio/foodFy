@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Restaurante FoodFy</title>
+
+        <link rel="stylesheet" href="/admin/styles/menu.css">
+        <link rel="stylesheet" href="/admin/styles/main.css">
+        
+        {% block styles %}{% endblock styles %}
+    </head>
+    <body>
+        <header>
+            <div class="menu">
+                <img src="/admin/assets/logo.png" alt="Imagem do Logo FoodFy">
+                <a href="/admin/recipes">Receitas</a>
+                <a href="/admin/chefs">Chefs</a>
+            </div>
+        </header>
+
+        {% block main %}{% endblock main %}
+
+        {% block scripts %}{% endblock scripts %}
+    </body>
+</html>

@@ -1,0 +1,29 @@
+{% extends "./layout.njk" %}
+
+{% block title %}
+    <title>Receitas - Foodfy Restaurante</title>
+{% endblock title %}
+
+{% block styles %}
+    <link rel="stylesheet" href="styles/cards.css">
+{% endblock styles %}
+
+{% block main %}
+    <div class="main">
+
+        <div class="cards">
+            {% for item in items %}
+                <div class="card" id="{{ item.cardId }}">
+                    <img src="{{ item.cardImage }}" alt="imagem do {{ item.cardTitle }}">
+                    <h3>{{ item.cardTitle }}</h3>
+                    <p>{{ item.cardAuthor }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+{% endblock main %}
+
+{% block scripts %}
+    <script src="scripts/index.js"></script>
+{% endblock scripts %}

@@ -1,0 +1,25 @@
+{% extends "../layout.njk" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="/admin/styles/chefs.css">
+    <link rel="stylesheet" href="/admin/styles/messages.css">
+{% endblock styles %}
+
+{% block main %}
+    <section>
+        
+        <div class="container">
+            {% include "../partials/messages.njk" %}
+            <div class="title">
+                <h2>Gerenciar Chefs</h2>
+                <a href="/admin/chefs/{{chef.id}}/edit" class="button save">Editar Chef</a>
+            </div>
+
+            <div class="detials-chefs">
+                <img src="{{chef.avatar}}" alt="{{chef.name}}">
+                <p>{{chef.name}}</p>
+                <span>4 Receitas</span>
+            </div>
+        </div>
+    </section>
+{% endblock main %}
