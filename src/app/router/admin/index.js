@@ -19,9 +19,8 @@ router.get('/admin/recipes', recipes.list)
 router.get('/admin/recipes/create', recipes.create)
 router.get('/admin/recipes/:id/show', recipes.show)
 router.get('/admin/recipes/:id/edit', recipes.edit)
+router.get('/admin/recipes/:id/delete', recipes.delete)
 
 router.post('/admin/recipes', recipes.save)
 router.put('/admin/recipes', recipes.update)
-    //router.delete('/admin/recipes', recipes.delete)
-
 module.exports = router

@@ -7,18 +7,35 @@
 
 {% block main %}
     <section>
-        
+
         <div class="container">
             {% include "../partials/messages.njk" %}
             <div class="title">
                 <h2>Gerenciar Chefs</h2>
-                <a href="/admin/chefs/{{chef.id}}/edit" class="button save">Editar Chef</a>
+                <a href="/admin/chefs/{{chef[0].idchef}}/edit" class="button save">Editar Chef</a>
             </div>
 
             <div class="detials-chefs">
-                <img src="{{chef.avatar}}" alt="{{chef.name}}">
-                <p>{{chef.name}}</p>
-                <span>4 Receitas</span>
+                <img src="{{chef[0].avatar}}" alt="{{chef[0].chef}}">
+                <p>{{chef[0].chef}}</p>
+                <span>{{chef[0].total}} Receitas</span>
+            </div>
+
+            <h2>Receitas</h2>
+
+            <div class="card-recipes">
+                {% for item in chef %}
+                    {%if (item.image) %}
+                    <div class="card">
+                        <img src="{{ item.image }}" alt="Imagem da Receita {{ item.title }}">
+                        <div class="information">
+                            <h2>{{ item.title }}</h2>
+                            <h4>{{ item.chef }}</h4>
+                            <a href="/admin/recipes/{{item.id}}/show">Visualizar</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </section>

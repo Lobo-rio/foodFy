@@ -18,12 +18,18 @@
     <body>
         <div class="container">
             <header>
+                <div class="logo">
+                    <a href="/"><img src="assets/logo.png" alt="Logo Foodfy"></a>
+                </div>
                 <div class="menu">
-                    <img src="assets/logo.png" alt="Logo Foodfy">
-                    <a href="/">Home</a>
                     <a href="/about">Sobre</a>
                     <a href="/recipes">Receitas</a>
+                    <a href="/chefs">Chefs</a>
                 </div>
+                <form class="search" action="/search" method="POST">
+                    <input type="text" name="filter" value="{{filter}}" placeholder="buscar uma receita">
+                    <button type="submit">buscar</button>
+                </form>
             </header>
 
             {% block main %}{% endblock main %}

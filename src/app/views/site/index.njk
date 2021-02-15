@@ -26,9 +26,9 @@
         <div class="cards">
             {% for item in recipes %}
                 <div class="card">
-                    <img src="{{ item.cardImage }}" alt="imagem do {{ item.cardTitle }}">
-                    <h3>{{ item.cardTitle }}</h3>
-                    <p>{{ item.cardAuthor }}</p>
+                    <img src="{{ item.image }}" alt="imagem do {{ item.title }}">
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.chef }}</p>
                 </div>
             {% endfor %}
         </div>

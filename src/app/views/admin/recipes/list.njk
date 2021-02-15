@@ -2,12 +2,14 @@
 
 {% block styles %}
     <link rel="stylesheet" href="/admin/styles/recipes.css">
+    <link rel="stylesheet" href="/admin/styles/messages.css">
 {% endblock styles %}
 
 {% block main %}
 
     <section>
         <div class="container">
+            {% include "../partials/messages.njk" %}
             <div class="title">
                 <h2>Gerenciar Receitas</h2>
                 <a href="/admin/recipes/create" class="button save">Nova Receita</a>

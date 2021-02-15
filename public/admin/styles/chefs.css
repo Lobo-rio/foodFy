@@ -18,6 +18,7 @@
 .detials-chefs {
     width: 100%;
     text-align: center;
+    margin-bottom: 36px;
 }
 
 .detials-chefs img {
@@ -32,11 +33,13 @@
     font-size: 36px;
     font-weight: bold;
     color: var(--primary-color);
+    margin-bottom: 4px;
 }
 
 .detials-chefs span {
     font-size: 20px;
-    font-weight: 300;
+    font-weight: 400;
+    line-height: 24px;
     color: var(--third-color);
 }
 
@@ -74,4 +77,46 @@
 
 .card .details a:hover {
     opacity: 0.6;
+}
+
+.card-recipes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+    margin: 26px 0 30px 0;
+}
+
+.card-recipes .card {
+    display: flex;
+}
+
+.card-recipes .card img {
+    width: 172px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8.57px;
+    margin-right: 16px;
+}
+
+.card-recipes .card h2 {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.card-recipes .card h4 {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    color: var(--third-color);
+    margin-bottom: 10px;
+}
+
+.card-recipes .card span {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 16px;
+    color: var(--secundary-color);
 }

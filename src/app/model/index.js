@@ -14,15 +14,62 @@ module.exports = {
     async findJoin(params) {
         try {
             const { table, tableJoin, idJoin, filterQuery } = params
+
             let query = `
-                SELECT ${table}.id AS idChef, ${table}.name AS chef, ${tableJoin}.* 
+                SELECT ${table}.id AS idchef, ${table}.name AS chef, ${tableJoin}.* 
                 FROM ${tableJoin}
-                LEFT JOIN ${table} ON (${table}.id = ${tableJoin}.chef_id)
+                LEFT JOIN ${table} ON (${table}.id = ${tableJoin}.${idJoin})
                 ORDER BY ${tableJoin}.title;
             `
-            return db.query(query)
+            return await db.query(query)
         } catch (error) {
             console.error(error)
+        }
+    },
+    async findJoinBy(params) {
+        try {
+            const { id, table, tableJoin, idJoin } = params
+
+            let query = `
+                SELECT ${tableJoin}.*, ${table}.id AS idchef, ${table}.name AS chef
+                FROM ${tableJoin}
+                LEFT JOIN ${table} ON (${table}.id = ${tableJoin}.${idJoin})
+                WHERE ${tableJoin}.id = ${id};
+            `
+            return await db.query(query)
+        } catch (error) {
+            console.error(error)
+        }
+    },
+    async findJoinCounter(params) {
+        try {
+            const { id, table, tableJoin, idJoin } = params
+
+            let query = `
+                SELECT (SELECT count(*) FROM ${tableJoin} WHERE ${tableJoin}.${idJoin} = ${id}) AS total, ${tableJoin}.*, 
+                ${table}.id AS idchef, ${table}.name AS chef, ${table}.avatar AS avatar 
+                FROM ${table}
+                LEFT JOIN ${tableJoin} ON (${tableJoin}.${idJoin} = ${table}.id)
+                WHERE ${table}.id = ${id};
+            `
+            return await db.query(query)
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    async findJoinCounterAll(params) {
+        try {
+            const { table, tableJoin, idJoin } = params
+
+            let query = `
+                SELECT ${table}.*, count(${tableJoin}) AS total
+                FROM ${table}
+                LEFT JOIN ${tableJoin} ON (${table}.id = ${tableJoin}.${idJoin})
+                GROUP BY ${table}.id
+            `
+            return await db.query(query)
+        } catch (error) {
+            console.log(error)
         }
     },
     async findOne(table, filters) {
@@ -41,15 +88,37 @@ module.exports = {
         const results = await db.query(query)
         return results.rows[0]
     },
+    async findJoinSearch(params) {
+        try {
+            const { filter, table, tableJoin, idJoin } = params
+
+            let query = "",
+                filterQuery = `WHERE`
+
+            filterQuery = `
+                ${filterQuery}
+                ${tableJoin}.title ilike '%${filter}%'
+                OR ${tableJoin}.ingredients ilike '%${filter}%'
+                OR ${tableJoin}.preparation ilike '%${filter}%'
+            `
+            query = `
+                SELECT ${tableJoin}.*, ${table}.id AS idchef, ${table}.name AS chef
+                FROM ${tableJoin}
+                LEFT JOIN ${table} ON (${table}.id = ${tableJoin}.${idJoin})
+                ${filterQuery}
+            `
+
+            return await db.query(query)
+        } catch (error) {
+            console.error(error)
+        }
+    },
     async save(params) {
-
         const { fields, values, table, data } = params
-
         const query = `
             INSERT INTO ${table} (${fields}) VALUES (${values})
             RETURNING id
         `
-
         return await db.query(query, data)
     },
     async update(params) {
@@ -66,36 +135,5 @@ module.exports = {
             console.error(error)
         }
 
-    },
-    search(params) {
-        try {
-            const { filter, category, table } = params
-
-            let query = "",
-                filterQuery = `WHERE`
-
-            if (category) {
-                filterQuery = `${filterQuery}
-                    ${table}.category_id = ${category}
-                    AND`
-            }
-
-            filterQuery = `
-                ${filterQuery}
-                ${table}.name ilike '%${filter}%'
-                OR ${table}.description ilike '%${filter}%'
-            `
-            query = `
-                SELECT ${table}.*, 
-                categories.name AS category_name
-                FROM ${table}
-                LEFT JOIN categories ON (categories.id = ${table}.category_id)
-                ${filterQuery}
-            `
-
-            return db.query(query)
-        } catch (error) {
-            console.error(error)
-        }
     }
 }

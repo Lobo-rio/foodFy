@@ -30,12 +30,15 @@ module.exports = {
     async show(req, res) {
         try {
             const { id } = req.params
-            let table = 'chefs'
+            let table = 'chefs',
+                tableJoin = 'recipes',
+                idJoin = 'chef_id',
+                params = ''
 
-            const params = { id, table }
+            params = { id, table, tableJoin, idJoin }
 
-            let results = await optionsDb.findBy(params)
-            const chef = results.rows[0]
+            let results = await optionsDb.findJoinCounter(params)
+            const chef = results.rows
 
             res.render("admin/chefs/show", { chef })
         } catch (error) {

@@ -2,7 +2,6 @@
     width: 940px;
     height: 280px;
     margin-bottom: 50px;
-
     border-radius: 15px;
 }
 
@@ -22,7 +21,6 @@
     font-size: 20px;
     font-weight: regular;
     line-height: 24px;
-
     color: var(--color-cinza);
     margin-bottom: 50px;
 }
@@ -30,7 +28,6 @@
 .main .title-recipes {
     display: flex;
     justify-content: space-between;
-    
     padding-top: 15px;
     margin-bottom: 20px;
     background-color: var(--color-selection);
@@ -41,23 +38,25 @@
     font-size: 24px;
     font-weight: bold;
     line-height: 28px;
-
     margin-left: 15px;
     margin-bottom: 20px;
 }
 
 .main .title-recipes span {
-    width: 30px;
+    width: 46px;
     height: 30px;
     font-size: 24px;
     font-weight: bold;
     line-height: 28px;
-    text-align: center;
-
-    border-radius: 5px;
+    color: whitesmoke;
+    background: #b4a1a1;
+    border-radius: 2px;
     margin-right: 25px;
     margin-bottom: 20px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .main .title-recipes span.ingredients:hover,
@@ -78,13 +77,10 @@
     font-weight: regular;
     line-height: 28px;
     padding: 30px;
-
     margin-bottom: 20px;
-
     border: 1px solid var(--color-list);
     border-radius: 5px;
     color: var(--color-list);
-
     transition: 300ms;
 }
 
@@ -92,4 +88,3 @@
 .main p.active {
     display: none;
 }
-

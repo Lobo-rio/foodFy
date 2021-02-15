@@ -43,15 +43,20 @@ module.exports = {
             let table = 'chefs',
                 tableJoin = 'recipes',
                 idJoin = 'chef_id',
-                filterQuery = `WHERE id = ${id}`,
                 params = ''
 
-            params = { table, tableJoin, idJoin, filterQuery }
-            let result = await optionsDb.findJoin(params)
+
+            params = { id, table, tableJoin, idJoin }
+            let result = await optionsDb.findJoinBy(params)
             const recipe = result.rows[0]
 
-            recipe.ingredients = recipe.ingredients.split(",")
-            recipe.preparation = recipe.preparation.split(",")
+            recipe.ingredients = recipe.ingredients.replace('{"', "")
+            recipe.ingredients = recipe.ingredients.replace('"}', "")
+            recipe.ingredients = recipe.ingredients.split('","')
+
+            recipe.preparation = recipe.preparation.replace('{"', "")
+            recipe.preparation = recipe.preparation.replace('"}', "")
+            recipe.preparation = recipe.preparation.split('","')
 
             return res.render("admin/recipes/show", { recipe })
         } catch (error) {
@@ -74,8 +79,13 @@ module.exports = {
             let result = await optionsDb.findJoin(params)
             const recipe = result.rows[0]
 
-            recipe.ingredients = recipe.ingredients.split(",")
-            recipe.preparation = recipe.preparation.split(",")
+            recipe.ingredients = recipe.ingredients.replace('{"', "")
+            recipe.ingredients = recipe.ingredients.replace('"}', "")
+            recipe.ingredients = recipe.ingredients.split('","')
+
+            recipe.preparation = recipe.preparation.replace('{"', "")
+            recipe.preparation = recipe.preparation.replace('"}', "")
+            recipe.preparation = recipe.preparation.split('","')
 
             table = 'chefs'
             options = 'ORDER BY name'
@@ -83,8 +93,6 @@ module.exports = {
 
             let results = await optionsDb.all(params)
             const chefs = results.rows
-
-            console.log(recipe)
 
             res.render("admin/recipes/edit", { recipe, chefs })
         } catch (error) {
@@ -97,9 +105,7 @@ module.exports = {
     async save(req, res) {
         try {
             const keys = Object.keys(req.body)
-            let table = 'chefs',
-                tableJoin = 'recipes',
-                idJoin = 'chef_id',
+            let table = 'recipes',
                 filterQuery = 'ORDER BY title',
                 fields = fieldsCreate(req.body),
                 values = valuesCreate(fields),
@@ -126,11 +132,16 @@ module.exports = {
             params = { fields, values, table, data }
             await optionsDb.save(params)
 
+            let tableJoin = 'recipes',
+                idJoin = 'chef_id'
+
+
+            table = 'chefs'
             params = { table, tableJoin, idJoin, filterQuery }
             let results = await optionsDb.findJoin(params)
             const recipes = results.rows
 
-            console.log(recipes)
+
             return res.render("admin/recipes/list", {
                 recipes,
                 success: "A Receita, foi salva com sucesso!"
@@ -146,7 +157,8 @@ module.exports = {
     async update(req, res) {
         try {
             const keys = Object.keys(req.body)
-            let table = 'chefs',
+            let table = 'recipes',
+                filterQuery = 'ORDER BY title',
                 params = ''
 
             for (key of keys) {
@@ -159,42 +171,76 @@ module.exports = {
             }
 
             const query = `
-                UPDATE chefs SET
-                    name = ($1),
-                    avatar = ($2)
-                    WHERE id = $3
+                UPDATE recipes SET
+                image = ($1),
+                title = ($2),
+                chef_id = ($3),
+                ingredients = ($4),
+                preparation = ($5),
+                information = ($6)
+                WHERE id = $7
             `
 
             const data = [
-                req.body.name,
-                req.body.avatar,
+                req.body.image,
+                req.body.title,
+                req.body.chef_id,
+                req.body.ingredients,
+                req.body.preparation,
+                req.body.information,
                 req.body.id
             ]
 
             params = { query, data }
             await optionsDb.update(params)
 
-            let options = 'ORDER BY name'
-            params = { table, options }
-            let results = await optionsDb.all(params)
-            const chefs = results.rows
+            let tableJoin = 'recipes',
+                idJoin = 'chef_id'
 
-            return res.render("admin/chefs/show", {
-                chefs,
-                success: "O Chef, foi alterado com sucesso!"
+
+            table = 'chefs'
+            params = { table, tableJoin, idJoin, filterQuery }
+            let results = await optionsDb.findJoin(params)
+            const recipes = results.rows
+
+            return res.render("admin/recipes/list", {
+                recipes,
+                success: "A receita, foi alterada com sucesso!"
             })
         } catch (error) {
             console.error(error)
-            return res.render("admin/chefs/show", {
+            return res.render("admin/recipes/list", {
                 error: "Houve um error no Update, favor voltar mas tarde!"
             })
         }
     },
-    delete(req, res) {
-        try {} catch (error) {
+    async delete(req, res) {
+        try {
+            const { id } = req.params
+            let table = 'recipes',
+                filterQuery = 'ORDER BY title',
+                params = ''
+
+            params = { id, table }
+            await optionsDb.delete(params)
+
+            let tableJoin = 'recipes',
+                idJoin = 'chef_id'
+
+
+            table = 'chefs'
+            params = { table, tableJoin, idJoin, filterQuery }
+            let results = await optionsDb.findJoin(params)
+            const recipes = results.rows
+
+            return res.render("admin/recipes/list", {
+                recipes,
+                success: "O Chef, foi alterado com sucesso!"
+            })
+        } catch (error) {
             console.error(error)
-            return res.render("users/index", {
-                error: "Error ao tentar deletar sua conta!"
+            return res.render("admin/recipes/list", {
+                error: "Error ao tentar deletar, favor voltar mas tarde!!"
             })
         }
     }

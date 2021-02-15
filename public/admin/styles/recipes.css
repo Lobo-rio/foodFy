@@ -91,16 +91,18 @@
 
 .cards-recipes .card h2 {
     font-size: 18px;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 21px;
     color: var(--primary-color);
+    margin-bottom: 5px;
 }
 
 .cards-recipes .card h4 {
     font-size: 14px;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 16px;
     color: var(--third-color);
+    margin-bottom: 10px;
 }
 
 .cards-recipes .card a {

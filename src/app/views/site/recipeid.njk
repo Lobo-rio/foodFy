@@ -12,11 +12,11 @@
 {% block main %}
     <div class="main">
         <div class="recipe-image">
-            <img src="{{ items.cardImage }}" alt="{{ items.cardTitle }}">
+            <img src="{{ recipe.image }}" alt="{{ recipe.title }}">
         </div>
         <div class="details-title">
-            <h1>{{ items.cardTitle }}</h1>
-            <p>{{ items.cardAuthor }}</p>
+            <h1>{{ recipe.title }}</h1>
+            <p>{{ recipe.chef }}</p>
         </div>
 
         <div class="title-recipes">
@@ -29,7 +29,7 @@
         </div>
 
         <ul id="list-ingredients" class="active">
-            {% for list in items.ingredients %}
+            {% for list in recipe.ingredients %}
                 <li>{{ list }}</li>
             {% endfor %}
         </ul>
@@ -44,7 +44,7 @@
         </div>
 
         <ul id="list-method-preparation" class="active">
-            {% for list in items.preparation %}
+            {% for list in recipe.preparation %}
                 <li>{{ list }}</li>
             {% endfor %}
         </ul>
@@ -59,7 +59,7 @@
             </span>
         </div>
 
-        <p id="list-information" class="active">{{ items.information }}</p>
+        <p id="list-information" class="active">{{ recipe.information }}</p>
     </div>
 {% endblock main %}
 

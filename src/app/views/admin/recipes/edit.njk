@@ -12,7 +12,7 @@
                     <h2>Editando Receita</h2>
                     <div class="options">
                         <a href="/admin/recipes/{{recipe.id}}/delete">Deletar</a>
-                        <button type="submit" class="save">Salvar Chef</button>
+                        <button type="submit" class="save">Salvar Receita</button>
                     </div>
                 </div>
                 <div class="description">
@@ -27,7 +27,7 @@
                     <div class="item">
                         <div>Nome da Receita</div>
                         <div>
-                            <input type="text" name="title" placeholder="Name" value="{{recipe.image}}" required>
+                            <input type="text" name="title" placeholder="Name" value="{{recipe.title}}" required>
                         </div>
                     </div>
 
@@ -52,7 +52,7 @@
                                 {% endfor %}
                             </div>
                         </div>
-                        <span class="add-ingredient">Adicionar novo ingrediente</span>
+                        
                     </div>
 
                     <div class="item">
@@ -64,7 +64,7 @@
                                 {% endfor %}
                             </div>
                         </div>
-                        <span class="add-preparing">Adicionar novo modo de preparar</span>
+                        
                     </div>
 
                     <div class="item">
@@ -81,6 +81,3 @@
     </section>
 
 {% endblock main %}
-{% block scripts %}
-    <script src="/admin/scripts/index.js"></script>
-{% endblock scripts %}
