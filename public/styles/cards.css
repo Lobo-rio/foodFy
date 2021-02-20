@@ -1,53 +1,45 @@
-.cards {
+.cards-recipes {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
+    gap: 16px;
 }
 
-.card {
-    cursor: pointer;
-}
-
-.card h2 {
-    font-size: 24px;
-    line-height: 28px;
-    margin-top: 50px;
+.cards-recipes .card img {
+    width: 300px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 15px;
     margin-bottom: 20px;
 }
 
-.card img {
-    width: 100%;
-    border-radius: 15px;
-}
-
-.card h3 {
+.cards-recipes .card h3 {
     font-size: 18px;
     font-weight: 400;
     line-height: 21px;
-    margin-top: 20px;
     color: var(--color-black);
+    margin-bottom: 5px;
 }
 
-.card p {
+.cards-recipes .card p {
     font-size: 14px;
     font-weight: 400;
     line-height: 16px;
     color: var(--color-cinza);
-    margin-top: 5px;
+    margin-bottom: 30px;
 }
 
-cards-chefs {
+.cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 16px;
+    gap: 20px;
 }
 
-.card-chefs {
+.cards .card {
     display: flex;
     align-items: center;
 }
 
-.card-chefs .logo img {
+.card .logo img {
     width: 64px;
     height: 64px;
     object-fit: cover;
@@ -55,16 +47,19 @@ cards-chefs {
     margin-right: 20px;
 }
 
-.card-chefs .details h3 {
+.card .details h3 {
     font-size: 18px;
     font-weight: 300;
     color: var(--primary-color);
     margin-bottom: 10px;
 }
 
-.card-chefs .details span {
+.card .details a {
     font-size: 14px;
-    font-weight: 400;
-    line-height: 16px;
-    color: #666666;
+    font-weight: bold;
+    color: var(--secundary-color);
+}
+
+.card .details a:hover {
+    opacity: 0.6;
 }

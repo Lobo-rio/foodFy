@@ -10,6 +10,7 @@ router.get('/admin/chefs/create', chefs.create)
 router.get('/admin/chefs/:id/details', chefs.show)
 router.get('/admin/chefs/:id/edit', chefs.edit)
 router.get('/admin/chefs/:id/delete', chefs.delete)
+
 router.post('/admin/chefs', chefs.save)
 router.put('/admin/chefs', chefs.update)
 
